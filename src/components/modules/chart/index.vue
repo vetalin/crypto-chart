@@ -1,5 +1,5 @@
 <template lang="pug">
-    .page-home
+    .module-chart
 </template>
 
 <script lang="ts">
@@ -12,6 +12,6 @@ interface Computed {}
 interface Props {}
 
 export default Vue.extend({
-    name: 'PageHome'
+    name: 'ModuleChart'
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>

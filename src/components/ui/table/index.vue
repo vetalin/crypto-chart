@@ -1,5 +1,5 @@
 <template lang="pug">
-    .page-home
+    .ui-table
 </template>
 
 <script lang="ts">
@@ -12,6 +12,6 @@ interface Computed {}
 interface Props {}
 
 export default Vue.extend({
-    name: 'PageHome'
+    name: 'UiTable'
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
