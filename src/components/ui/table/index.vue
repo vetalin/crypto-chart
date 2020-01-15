@@ -12,6 +12,6 @@ interface Computed {}
 interface Props {}
 
 export default Vue.extend({
-    name: 'UiTable'
+  name: 'UiTable'
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
