@@ -12,6 +12,6 @@ interface Computed {}
 interface Props {}
 
 export default Vue.extend({
-    name: 'ModuleChart'
+  name: 'ModuleChart'
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
