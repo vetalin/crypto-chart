@@ -1,7 +1,4 @@
-export interface IRate {
-  id: string
-  symbol: string
-  currencySymbol: string | null
-  type: string
-  rateUsd: string
+import { IMarket } from '@/requests/markets/interfaces'
+export interface IMarketHashTable {
+  [baseId: string]: IMarket
 }

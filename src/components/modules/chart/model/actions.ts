@@ -1,12 +1,10 @@
 import { ActionTree } from 'vuex'
-import { getRates } from '@/requests/rates/rates'
-import { ratesAdapter } from './adapter'
-import { IRatesResponse } from '@/requests/rates/interfaces'
+import { IMarketsResponse } from '../../../../requests/markets/interfaces'
+import { getMarkets } from '../../../../requests/markets/markets'
 
 export const chartActions: ActionTree<any, any> = {
-  async getRates({ commit }) {
-    const rates: IRatesResponse = await getRates()
-    const filteredRates = ratesAdapter(rates.data)
-    commit('rates', filteredRates)
+  async getMarkets({ commit }) {
+    const markets: IMarketsResponse = await getMarkets()
+    commit('markets', markets.data)
   }
 }

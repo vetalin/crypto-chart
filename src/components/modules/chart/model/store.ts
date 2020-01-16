@@ -1,15 +1,18 @@
-import { IRate } from '../interfaces'
 import { chartActions } from './actions'
 import { storeFabricBoilerplate } from '@/store/fabricBoilerplate'
+import { IMarket } from '@/requests/markets/interfaces'
+import { IMarketHashTable } from '../interfaces'
 
 export const moduleName = 'chart'
 
 export interface StateChart {
-  rates: IRate[]
+  markets: IMarket[]
+  marketsHashTable: IMarketHashTable
 }
 
 export const state: StateChart = {
-  rates: []
+  markets: [],
+  marketsHashTable: {}
 }
 
 const { getters, mutations } = storeFabricBoilerplate(state)
