@@ -6,6 +6,7 @@
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { initPricesListener } from '@/requests/prices/pricesSocket'
+import { getRates } from '../requests/rates'
 
 interface Data {
   ev: any
@@ -21,10 +22,9 @@ export default Vue.extend({
       ev: ''
     }
   },
-  created() {
-    initPricesListener(ev => {
-      this.ev += ev.data
-    })
+  async created() {
+    const rates = await getRates()
+    debugger
   }
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
