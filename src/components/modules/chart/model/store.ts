@@ -1,6 +1,6 @@
 import { Rate } from '../interfaces'
 import { chartActions } from './actions'
-import { storeFabricBoilerplate } from '../../../../store/fabricBoilerplate'
+import { storeFabricBoilerplate } from '@/store/fabricBoilerplate'
 
 export const moduleName = 'chart'
 
