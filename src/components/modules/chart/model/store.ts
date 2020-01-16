@@ -6,12 +6,12 @@ import { IMarketHashTable } from '../interfaces'
 export const moduleName = 'chart'
 
 export interface StateChart {
-  markets: IMarket[]
+  initialMarkets: IMarket[]
   marketsHashTable: IMarketHashTable
 }
 
 export const state: StateChart = {
-  markets: [],
+  initialMarkets: [],
   marketsHashTable: {}
 }
 
