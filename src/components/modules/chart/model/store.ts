@@ -1,11 +1,11 @@
-import { Rate } from '../interfaces'
+import { IRate } from '../interfaces'
 import { chartActions } from './actions'
 import { storeFabricBoilerplate } from '@/store/fabricBoilerplate'
 
 export const moduleName = 'chart'
 
 export interface StateChart {
-  rates: Rate[]
+  rates: IRate[]
 }
 
 export const state: StateChart = {

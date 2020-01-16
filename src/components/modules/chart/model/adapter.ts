@@ -1,5 +1,5 @@
-import { Rate } from '../interfaces'
+import { IRate } from '../interfaces'
 
-export const ratesAdapter = (rates: Rate[]): Rate[] => {
+export const ratesAdapter = (rates: IRate[]): IRate[] => {
   return rates
 }

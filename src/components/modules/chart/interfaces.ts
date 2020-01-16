@@ -1,4 +1,4 @@
-export interface Rate {
+export interface IRate {
   id: string
   symbol: string
   currencySymbol: string | null
