@@ -13,5 +13,15 @@ export const chartActions: ActionTree<any, any> = {
   },
   async pricesChanged({ commit }, changedPrices: IPriceSocket) {
     commit('changedPrices', changedPrices)
+  },
+  changeMarkets({ commit, getters }, { changedKey, changedPrice }) {
+    const { marketsHashTable } = getters
+    commit('marketsHashTable', {
+      ...marketsHashTable,
+      [changedKey]: {
+        ...marketsHashTable[changedKey],
+        priceUsd: changedPrice
+      }
+    })
   }
 }

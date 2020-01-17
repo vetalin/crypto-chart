@@ -1,12 +1,14 @@
 <template lang="pug">
-    .page-home {{ ev }}
+    .page-home
+      module-chart
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { initPricesListener } from '@/requests/prices/pricesSocket'
-import { getMarkets } from '../requests/markets/markets'
+import { getMarkets } from '@/requests/markets/markets'
+import ModuleChart from '@/components/modules/chart/index.vue'
 
 interface Data {
   ev: any
@@ -17,14 +19,6 @@ interface Props {}
 
 export default Vue.extend({
   name: 'PageHome',
-  data() {
-    return {
-      ev: ''
-    }
-  },
-  async created() {
-    const rates = await getMarkets()
-    debugger
-  }
+  components: { ModuleChart }
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
