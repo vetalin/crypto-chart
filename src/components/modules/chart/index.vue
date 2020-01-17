@@ -1,9 +1,6 @@
 <template lang="pug">
     .module-chart
-      .module-chart__item(v-for="(value, key) in marketsHashTable", :key="key")
-        .module-chart__row.module-chart__row_name {{ key }}
-        .module-chart__row.module-chart__row_price {{ value.priceUsd }}
-        br
+      ui-table(:items="Object.values(marketsHashTable)")
 </template>
 
 <script lang="ts">
@@ -13,6 +10,7 @@ import { moduleName, store } from './model/store'
 import { createNamespacedHelpers } from 'vuex'
 import { subscribePriceChanges } from './model/mediator'
 import { IMarketHashTable } from './interfaces'
+import UiTable from '@/components/ui/table/index.vue'
 
 type ChangedPriceItem = { changedKey: string; changedPrice: string }
 interface Data {
@@ -54,6 +52,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters(['marketsHashTable', 'changedPrices'])
-  }
+  },
+  components: { UiTable }
 } as ThisTypedComponentOptionsWithRecordProps<Vue, Data, Methods, Computed, Props>)
 </script>
