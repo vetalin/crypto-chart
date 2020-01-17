@@ -6,8 +6,6 @@
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { initPricesListener } from '@/requests/prices/pricesSocket'
-import { getRates } from '../requests/rates/rates'
-import { ratesAdapter } from '../components/modules/chart/model/adapter'
 import { getMarkets } from '../requests/markets/markets'
 
 interface Data {
