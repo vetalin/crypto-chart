@@ -1,5 +1,5 @@
 import { IPriceSocket } from '@/requests/prices/interfaces'
-import Vuex from 'vuex'
+import Vuex from '@/store'
 import { initPricesListener } from '@/requests/prices/pricesSocket'
 
 export const subscribePriceChanges = (
