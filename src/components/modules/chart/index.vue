@@ -2,7 +2,7 @@
     .module-chart
       .module-chart__item(v-for="(value, key) in marketsHashTable", :key="key")
         .module-chart__row.module-chart__row_name {{ key }}
-        .module-chart__row.module-chart__row_price {{ changedPrices[key] ? showChangedMarket(key, changedPrices[key]) : value.priceUsd }}
+        .module-chart__row.module-chart__row_price {{ value.priceUsd }}
         br
 </template>
 
@@ -20,7 +20,6 @@ interface Data {
 }
 interface Methods {
   getMarkets: () => Promise<void>
-  changeMarkets: (changedPriceItem: ChangedPriceItem) => Promise<void>
 }
 interface Computed {
   marketsHashTable: IMarketHashTable
@@ -51,11 +50,6 @@ export default Vue.extend({
     )
   },
   methods: {
-    showChangedMarket(changedKey: string, changedPrice: string) {
-      // move tasks to down callstack for avoid re-render loop
-      setTimeout(() => this.changeMarkets({ changedKey, changedPrice }), 0)
-      return changedPrice
-    },
     ...mapActions(['getMarkets', 'changeMarkets'])
   },
   computed: {

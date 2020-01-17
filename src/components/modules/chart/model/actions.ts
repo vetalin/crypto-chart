@@ -8,20 +8,22 @@ export const chartActions: ActionTree<any, any> = {
   async getMarkets({ commit }) {
     const initialMarkets: IMarketsResponse = await getMarkets()
     const marketHash = marketsHashTableAdapter(initialMarkets.data)
-    commit('initialMarkets', initialMarkets.data)
     commit('marketsHashTable', marketHash)
   },
-  async pricesChanged({ commit }, changedPrices: IPriceSocket) {
-    commit('changedPrices', changedPrices)
-  },
-  changeMarkets({ commit, getters }, { changedKey, changedPrice }) {
+  async pricesChanged({ commit, getters }, changedPrices: IPriceSocket) {
     const { marketsHashTable } = getters
-    commit('marketsHashTable', {
-      ...marketsHashTable,
-      [changedKey]: {
-        ...marketsHashTable[changedKey],
-        priceUsd: changedPrice
-      }
-    })
+    const changedMarkets = Object.entries(changedPrices).reduce(
+      (acc, [changedKey, changedValue]) => {
+        return {
+          ...acc,
+          [changedKey]: {
+            ...marketsHashTable[changedKey],
+            priceUsd: changedValue
+          }
+        }
+      },
+      marketsHashTable
+    )
+    commit('marketsHashTable', changedMarkets)
   }
 }
