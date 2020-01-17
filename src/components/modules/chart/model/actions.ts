@@ -11,5 +11,7 @@ export const chartActions: ActionTree<any, any> = {
     commit('initialMarkets', initialMarkets.data)
     commit('marketsHashTable', marketHash)
   },
-  async pricesChanged({ commit }, changedPrices: IPriceSocket) {}
+  async pricesChanged({ commit }, changedPrices: IPriceSocket) {
+    commit('changedPrices', changedPrices)
+  }
 }
