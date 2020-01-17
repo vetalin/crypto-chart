@@ -1,0 +1,66 @@
+.ui-table
+  position: relative
+  display: grid
+  grid-template-rows 55px 1fr
+  grid-gap: 5px
+  align-items start
+  border-radius: 7px
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .4)
+  height: 100%
+  font-family: var(--font-face)
+  padding: 0 0 20px 0
+  box-sizing border-box
+
+  &__content
+    overflow auto
+    height 100%
+  &__headers
+    z-index: 2
+    color: #a4a4a4
+
+  &__cell
+    color: #e1e1e1
+    font-size: 11px
+    font-weight: 100
+    letter-spacing: .7px
+    text-transform: uppercase
+
+  &__column
+    display: flex
+    padding: 25px 25px 25px 0
+    align-items center
+
+    &:first-child
+      padding 25px
+
+    &_horizontal-position
+      &_center
+        justify-content center
+
+      &_right
+        justify-content right
+
+  &__row, &__headers
+    display: grid
+    grid-auto-columns minmax(70px, 1fr)
+    grid-auto-flow column
+    grid-gap: 5px
+    box-shadow none
+    border-top: 1px solid transparent
+
+  &__row
+    transition all .35s
+    position relative
+    background-color: transparent
+    color: #e1e1e1
+
+    &_up
+      background-color: #51d451
+
+    &_down
+      background-color: #c52626
+
+  &__cell
+    word-break break-word
+    font-size: 14px
+
