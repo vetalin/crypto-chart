@@ -15,7 +15,9 @@ import { subscribePriceChanges } from './model/mediator'
 import { IMarketHashTable } from './interfaces'
 
 type ChangedPriceItem = { changedKey: string; changedPrice: string }
-interface Data {}
+interface Data {
+  socket: WebSocket
+}
 interface Methods {
   getMarkets: () => Promise<void>
   changeMarkets: (changedPriceItem: ChangedPriceItem) => Promise<void>
@@ -34,17 +36,24 @@ export default Vue.extend({
   },
   beforeDestroy() {
     this.$store.unregisterModule(moduleName)
+    this.socket.close()
+  },
+  data() {
+    return {
+      socket: null
+    }
   },
   async created() {
     await this.getMarkets()
-    subscribePriceChanges(
+    this.socket = subscribePriceChanges(
       `${moduleName}/pricesChanged`,
       Object.keys(this.marketsHashTable).join(',')
     )
   },
   methods: {
     showChangedMarket(changedKey: string, changedPrice: string) {
-      this.changeMarkets({ changedKey, changedPrice })
+      // move tasks to down callstack for avoid re-render loop
+      setTimeout(() => this.changeMarkets({ changedKey, changedPrice }), 0)
       return changedPrice
     },
     ...mapActions(['getMarkets', 'changeMarkets'])
