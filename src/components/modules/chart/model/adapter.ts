@@ -24,7 +24,7 @@ export const marketsHashTableAdapter = (
 const marketAdapter = (market: IMarket): IMarketAdaptForView => {
   return {
     name: market.name,
-    priceUsd: priceAdapter(market.priceUsd),
+    priceUsd: priceAdapter(market.priceUsd, 3),
     marketCap: priceAdapter(market.marketCapUsd),
     volume: priceAdapter(market.volumeUsd24Hr),
     supply: priceAdapter(market.supply),
@@ -32,6 +32,6 @@ const marketAdapter = (market: IMarket): IMarketAdaptForView => {
   }
 }
 
-export const priceAdapter = (price: string) => {
-  return String(Number(price).toFixed(2))
+export const priceAdapter = (price: string, fixedPoint: number = 2) => {
+  return String(Number(price).toFixed(fixedPoint))
 }

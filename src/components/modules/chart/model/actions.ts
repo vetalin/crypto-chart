@@ -26,7 +26,7 @@ export const chartActions: ActionTree<any, any> = {
           ...acc,
           [changedKey]: {
             ...marketsHashTable[changedKey],
-            priceUsd: priceAdapter(changedValue)
+            priceUsd: priceAdapter(changedValue, 3)
           }
         }
       },
