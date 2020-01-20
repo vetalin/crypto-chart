@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/standard', '@vue/typescript'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/no-named-as-default': 0,
     'space-before-function-paren': 0
