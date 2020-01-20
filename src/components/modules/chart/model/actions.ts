@@ -15,13 +15,13 @@ export const chartActions: ActionTree<any, any> = {
     const { marketsHashTable } = getters
     const changedMarkets = Object.entries(changedPrices).reduce(
       (acc, [changedKey, changedValue]) => {
-        const oldPrice = marketsHashTable[changedKey].priceUsd
-        const newPrice = changedValue
-        const upOrDown = Number(oldPrice) < Number(newPrice) ? 'up' : 'down'
+        const oldPrice = priceAdapter(marketsHashTable[changedKey].priceUsd, 3)
+        const newPrice = priceAdapter(changedValue, 3)
+        const upOrDown = oldPrice < newPrice ? 'up' : 'down'
         const keyTable = marketsHashTable[changedKey].name
           .toLowerCase()
           .replace(' ', '_')
-        upDownAnimate(keyTable, upOrDown)
+        if (oldPrice !== newPrice) upDownAnimate(keyTable, upOrDown)
         return {
           ...acc,
           [changedKey]: {
