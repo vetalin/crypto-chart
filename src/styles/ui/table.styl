@@ -1,0 +1,81 @@
+.ui-table
+  position: relative
+  display: grid
+  grid-template-rows 55px 1fr
+  grid-gap: 5px
+  align-items start
+  border-radius: 7px
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .4)
+  height: 100%
+  padding: 0 0 10px 0
+  box-sizing border-box
+  border-radius: 10px
+
+  &__content
+    overflow hidden
+    height 100%
+    padding: 0 15px
+    &:hover
+      overflow: auto
+  &__headers
+    z-index: 2
+    padding 0 15px
+    color: #a4a4a4
+    background: #2d2828
+  &__header
+    padding: 15px 0
+
+  &__cell
+    color: #e1e1e1
+    font-size: 11px
+    font-weight: 100
+    letter-spacing: .7px
+    text-transform: uppercase
+    padding: 15px 0
+
+  &__column
+    display: flex
+    padding: 25px 25px 25px 0
+    align-items center
+
+    &:first-child
+      padding 25px
+
+    &_horizontal-position
+      &_center
+        justify-content center
+
+      &_right
+        justify-content right
+
+  &__row, &__headers
+    display: grid
+    grid-auto-columns minmax(70px, 1fr)
+    grid-auto-flow column
+    grid-gap: 5px
+    box-shadow none
+    border-top: 1px solid transparent
+
+  &__row
+    transition all .35s
+    position relative
+    background-color: transparent
+    color: #e1e1e1
+    border-bottom: 1px solid #101010
+    &:last-child
+      border-bottom: none
+
+    &_up
+      background-color: #006100
+
+    &_down
+      background-color: #540000
+
+  &__cell
+    word-break break-word
+    font-size: 14px
+
+@media (max-width: 1000px)
+  .ui-table__content
+    overflow: auto
+
