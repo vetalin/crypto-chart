@@ -3,7 +3,7 @@
       .ui-table__headers
         .ui-table__header(v-for="(header, index) in headerText", :key="`header-${index}`") {{ header }}
       .ui-table__content
-        .ui-table__row(v-for="(row, rowIndex) in rows", :key="`table-row-${rowIndex}`")
+        .ui-table__row(v-for="(row, rowIndex) in rows", :key="`table-row-${rowIndex}`", :class="generateIndificateClass(row)")
           .ui-table__cell(v-for="(cell, cellIndex) in row", :key="`table-cell-${rowIndex}-${cellIndex}`") {{ cell }}
 </template>
 
@@ -25,6 +25,7 @@ interface Items {
 interface Props {
   items: Items[]
   headerMapFn: (headerKey: string) => string
+  propId: number
 }
 
 export default Vue.extend({
@@ -36,6 +37,15 @@ export default Vue.extend({
     },
     headerMapFn: {
       type: Function
+    },
+    propId: {
+      type: Number,
+      default: () => 0
+    }
+  },
+  methods: {
+    generateIndificateClass(row: any) {
+      return `ui-table__row_${row[this.propId].toLowerCase().replace(' ', '_')}`
     }
   },
   computed: {

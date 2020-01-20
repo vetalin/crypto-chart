@@ -12,3 +12,19 @@ export const subscribePriceChanges = (
   }
   return initPricesListener(listener, markets)
 }
+
+export const upDownAnimate = (id: string, upOrDown: 'up' | 'down'): boolean => {
+  const baseTableClassRow = 'ui-table__row'
+  const elementById = document.querySelector(`.${baseTableClassRow}_${id}`)
+  if (!elementById) {
+    console.error(`element by id ${id} not found in table`)
+    return false
+  }
+  const pusher = (elm: Element, subClass: string) => {
+    const generatedClass = `${baseTableClassRow}_${subClass}`
+    elm.classList.add(generatedClass)
+    setTimeout(() => elm.classList.remove(generatedClass), 350)
+  }
+  pusher(elementById, upOrDown)
+  return true
+}
