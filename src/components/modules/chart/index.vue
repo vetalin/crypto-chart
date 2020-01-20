@@ -1,6 +1,6 @@
 <template lang="pug">
     .module-chart
-      ui-table(:items="Object.values(marketsHashTable)")
+      ui-table(:items="Object.values(marketsHashTable)", :headerMapFn="headerMapFn")
 </template>
 
 <script lang="ts">
@@ -11,6 +11,8 @@ import { createNamespacedHelpers } from 'vuex'
 import { subscribePriceChanges } from './model/mediator'
 import { IMarketHashTable } from './interfaces'
 import UiTable from '@/components/ui/table/index.vue'
+import { chartHeaderNames } from './headersNames'
+import { IMarketAdaptForView } from './model/adapter'
 
 type ChangedPriceItem = { changedKey: string; changedPrice: string }
 interface Data {
@@ -37,7 +39,9 @@ export default Vue.extend({
   },
   data() {
     return {
-      socket: null
+      socket: null,
+      headerMapFn: (headerText: keyof IMarketAdaptForView) =>
+        chartHeaderNames[headerText]
     }
   },
   async created() {

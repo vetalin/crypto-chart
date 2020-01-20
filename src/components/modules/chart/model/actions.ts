@@ -1,7 +1,7 @@
 import { ActionTree } from 'vuex'
 import { IMarketsResponse } from '@/requests/markets/interfaces'
 import { getMarkets } from '@/requests/markets/markets'
-import { marketsHashTableAdapter } from './adapter'
+import { marketsHashTableAdapter, priceAdapter } from './adapter'
 import { IPriceSocket } from '@/requests/prices/interfaces'
 
 export const chartActions: ActionTree<any, any> = {
@@ -18,7 +18,7 @@ export const chartActions: ActionTree<any, any> = {
           ...acc,
           [changedKey]: {
             ...marketsHashTable[changedKey],
-            priceUsd: changedValue
+            priceUsd: priceAdapter(changedValue)
           }
         }
       },

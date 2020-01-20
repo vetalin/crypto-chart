@@ -1,16 +1,15 @@
 export interface IMarket {
-  exchangeId: string
+  id: string
   rank: string
-  baseSymbol: string
-  baseId: string
-  quoteSymbol: string
-  quoteId: string
-  priceQuote: string
-  priceUsd: string
+  symbol: string
+  name: string
+  supply: string
+  maxSupply: string
+  marketCapUsd: string
   volumeUsd24Hr: string
-  percentExchangeVolume: string
-  tradesCount24Hr: string
-  updated: string
+  priceUsd: string
+  changePercent24Hr: string
+  vwap24Hr: string
 }
 
 export interface IMarketsResponse {
